@@ -27,30 +27,22 @@ public class ReporteService {
         return reporteRepository.findAll();
     }
 
-    public Reporte generarReporteVentas() {
-        return generarReporte(TipoReporte.VENTAS);
+    public void generarReporteVentas(int idRepVenta) {
+        Reporte reporte = reporteRepository.findById(idRepVenta)
+                .orElseThrow(() -> new IllegalArgumentException("Reporte : " + idRepVenta + " no ha sido encontrado"));
+        reporte.generarReporteVentas();
     }
-
-    public Reporte generarReporteInventario() {
-        return generarReporte(TipoReporte.INVENTARIO);
-    }
-
-    public Reporte generarReporteEntrega() {
-        return generarReporte(TipoReporte.ENTREGA);
-    }
-
-
-    public List<Reporte> obtenerPorTipo(TipoReporte tipo) {
-        return reporteRepository.findByTipoReporte(tipo);
-    }
-
-    private Reporte generarReporte(TipoReporte tipo) {
-        Reporte reporte = new Reporte();
-        reporte.setTipoReporte(tipo);
-        reporte.setFechaReporte(LocalDateTime.now());
-        return reporteRepository.save(reporte);
+    public void generarReporteInventario(int idRepInventario) {
+        Reporte reporte = reporteRepository.findById(idRepInventario)
+                .orElseThrow(() -> new IllegalArgumentException("Reporte : " + idRepInventario + " no ha sido encontrado"));
+        reporte.generarReporteInventario();
     }
     
+    public void generarReporteEntrega(int idRepEntrega) {
+        Reporte reporte = reporteRepository.findById(idRepEntrega)
+                .orElseThrow(() -> new IllegalArgumentException("Reporte : " + idRepEntrega + " no ha sido encontrado"));
+        reporte.generarReporteInventario();
+    }
 
 
 }

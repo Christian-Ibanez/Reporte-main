@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,19 +35,22 @@ public class ReporteController {
     }
 
  
-    @GetMapping("/ventas")
-    public ResponseEntity<Reporte> generarReporteVentas() {
-        return ResponseEntity.ok(reporteService.generarReporteVentas());
+     @PostMapping("/ventas")
+    public ResponseEntity<String> generarReporteVenta(@PathVariable int idRepVenta) {
+        reporteService.generarReporteVentas(idRepVenta);
+        return ResponseEntity.ok("Se ha generado el reporte de ventas con id: " + idRepVenta);
     }
 
-    @GetMapping("/inventario")
-    public ResponseEntity<Reporte> generarReporteInventario() {
-        return ResponseEntity.ok(reporteService.generarReporteInventario());
+    @PostMapping("/inventario")
+    public ResponseEntity<String> generarReporteInventario(@PathVariable int idRepInventario) {
+        reporteService.generarReporteInventario(idRepInventario);
+        return ResponseEntity.ok("Se ha generado el reporte de inventario con id: " + idRepInventario);
     }
 
-    @GetMapping("/entrega")
-    public ResponseEntity<Reporte> generarReporteEntrega() {
-        return ResponseEntity.ok(reporteService.generarReporteEntrega());
+    @PostMapping("/entrega")
+    public ResponseEntity<String> generarReporteEntrega(@PathVariable int idRepEntrega) {
+        reporteService.generarReporteEntrega(idRepEntrega);
+        return ResponseEntity.ok("Se ha generado el reporte de entrega con id: " + idRepEntrega);
     }
     
     
