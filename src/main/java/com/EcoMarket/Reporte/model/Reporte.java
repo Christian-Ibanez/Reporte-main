@@ -1,13 +1,9 @@
 package com.EcoMarket.Reporte.model;
 
 
-import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,38 +19,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class Reporte {
-    @Id
+     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idReporte;
-    
-    @Enumerated(EnumType.STRING)
-    private TipoReporte tipoReporte; // VENTAS, INVENTARIO, ENTREGA
+    private int id;
+    private TipoReporte tipo;
+    private LocalDate fecha;
+    private String formato;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "America/Santiago")
-    private LocalDateTime fechaReporte;
-
-
-    public void generarReporteVentas() {
-        if (this.tipoReporte == TipoReporte.VENTAS) {
-            System.out.println("Reporte de " + tipoReporte + " creado el " + fechaReporte);
+    public void generarReporteVenta() {
+        if (this.tipo == TipoReporte.VENTAS) {
+            System.out.println("Generando reporte de venta en formato " + formato + " para la fecha " + fecha);
         } else {
             throw new IllegalStateException("Este reporte no es de tipo VENTA");
         }
     }
-
     public void generarReporteInventario() {
-        if (this.tipoReporte == TipoReporte.INVENTARIO) {
-            System.out.println("Reporte de " + tipoReporte + " creado el " + fechaReporte);
+        if (this.tipo == TipoReporte.INVENTARIO) {
+            System.out.println("Generando reporte de inventario en formato " + formato + " para la fecha " + fecha);
         } else {
             throw new IllegalStateException("Este reporte no es de tipo INVENTARIO");
-        }
-    }
-
-    public void generarReporteEntrega() {
-        if (this.tipoReporte == TipoReporte.ENTREGA) {
-            System.out.println("Reporte de " + tipoReporte + " creado el " + fechaReporte);
-        } else {
-            throw new IllegalStateException("Este reporte no es de tipo ENTREGA");
         }
     }
     

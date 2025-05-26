@@ -21,36 +21,30 @@ import com.EcoMarket.Reporte.service.ReporteService;
 
 public class ReporteController {
     
-    @Autowired
+     @Autowired
     private ReporteService reporteService;
 
-    @PostMapping
-    public ResponseEntity<Reporte> crearReporte(@RequestBody Reporte reporte) {
-        return ResponseEntity.ok(reporteService.guardarReporte(reporte));
+    @PostMapping("/crear")
+    public ResponseEntity<Reporte> createReporte(@RequestBody Reporte reporte){
+        Reporte savedReporte = reporteService.create(reporte);
+        return ResponseEntity.ok(savedReporte);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Reporte>> obtenerTodosReportes() {
-        return ResponseEntity.ok(reporteService.obtenerTodosReportes());
+    @GetMapping("/mostrar")
+    public ResponseEntity<List<Reporte>> getAllReportes() {
+        return ResponseEntity.ok(reporteService.readAllReportes());
     }
 
- 
-     @PostMapping("/ventas")
-    public ResponseEntity<String> generarReporteVenta(@PathVariable int idRepVenta) {
-        reporteService.generarReporteVentas(idRepVenta);
-        return ResponseEntity.ok("Se ha generado el reporte de ventas con id: " + idRepVenta);
+    @PostMapping("/reporteVenta/{id}")	
+    public Reporte generarReporteVenta(@PathVariable int id) {
+         return reporteService.generarReporteVenta(id);
+        
     }
 
-    @PostMapping("/inventario")
-    public ResponseEntity<String> generarReporteInventario(@PathVariable int idRepInventario) {
-        reporteService.generarReporteInventario(idRepInventario);
-        return ResponseEntity.ok("Se ha generado el reporte de inventario con id: " + idRepInventario);
-    }
-
-    @PostMapping("/entrega")
-    public ResponseEntity<String> generarReporteEntrega(@PathVariable int idRepEntrega) {
-        reporteService.generarReporteEntrega(idRepEntrega);
-        return ResponseEntity.ok("Se ha generado el reporte de entrega con id: " + idRepEntrega);
+    @PostMapping("/reporteInventario/{id}")
+    public Reporte generarReporteInventario(@PathVariable int id) {
+         return reporteService.generarReporteInventario(id);
+        
     }
     
     
