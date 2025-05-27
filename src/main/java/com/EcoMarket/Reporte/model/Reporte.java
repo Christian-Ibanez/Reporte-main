@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class Reporte {
-     @Id
+    @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private TipoReporte tipo;
@@ -28,17 +28,24 @@ public class Reporte {
 
     public void generarReporteVenta() {
         if (this.tipo == TipoReporte.VENTAS) {
-            System.out.println("Generando reporte de venta en formato " + formato + " para la fecha " + fecha);
+            System.out.println("Generando reporte de venta en formato " + formato + " con fecha " + fecha);
         } else {
             throw new IllegalStateException("Este reporte no es de tipo VENTA");
         }
     }
     public void generarReporteInventario() {
         if (this.tipo == TipoReporte.INVENTARIO) {
-            System.out.println("Generando reporte de inventario en formato " + formato + " para la fecha " + fecha);
+            System.out.println("Generando reporte de inventario en formato " + formato + " con fecha " + fecha);
         } else {
             throw new IllegalStateException("Este reporte no es de tipo INVENTARIO");
         }
     }
     
+    public void generarReporteEntrega() {
+        if (this.tipo == TipoReporte.ENTREGA) {
+            System.out.println("Generando reporte de entrega en formato " + formato + " con fecha " + fecha);
+        } else {
+            throw new IllegalStateException("Este reporte no es de tipo ENTREGA");
+        }
+    }
 }   

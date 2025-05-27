@@ -33,4 +33,7 @@ public class ReporteServiceImpl implements ReporteService {
         return reporteRepository.generarReporteInventario(id);
     }
     
+    public Reporte generarReporteEntrega(int id) {
+        return reporteRepository.generarReporteEntrega(id);
+    }
 }

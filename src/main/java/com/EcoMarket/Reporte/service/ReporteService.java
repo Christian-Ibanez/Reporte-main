@@ -10,6 +10,7 @@ public interface ReporteService {
     Reporte create(Reporte newReporte);
     Reporte generarReporteVenta(int id);
     Reporte generarReporteInventario(int id);
+    Reporte generarReporteEntrega(int id);
 }
     
 

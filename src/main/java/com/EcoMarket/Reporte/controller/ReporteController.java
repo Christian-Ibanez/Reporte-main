@@ -47,5 +47,10 @@ public class ReporteController {
         
     }
     
+    @PostMapping("/reporteEntrega/{id}")
+    public Reporte generarReporteEntrega(@PathVariable int id) {
+         return reporteService.generarReporteEntrega(id);
+        
+    }
     
 }
