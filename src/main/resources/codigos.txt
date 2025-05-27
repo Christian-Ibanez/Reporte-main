@@ -1,0 +1,20 @@
+{
+  "id": 101,
+  "tipo": "VENTAS",
+  "fecha": "2023-11-20",
+  "formato": "PDF"
+}
+
+{
+  "id": 102,
+  "tipo": "INVENTARIO",
+  "fecha": "2023-11-19",
+  "formato": "EXCEL"
+}
+
+{
+  "id": 103,
+  "tipo": "ENTREGA",
+  "fecha": "2023-11-18",
+  "formato": "CSV"
+}
