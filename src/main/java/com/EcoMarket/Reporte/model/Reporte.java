@@ -3,28 +3,40 @@ package com.EcoMarket.Reporte.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
 @Table(name = "Reporte")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 
 public class Reporte {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id; // Cambiado a Integer para permitir null
+
+    @Enumerated(EnumType.STRING)
     private TipoReporte tipo;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate fecha;
-    private String formato;
+
+    @Enumerated(EnumType.STRING)
+    private TipoFormato formato;
 
     public void generarReporteVenta() {
         if (this.tipo == TipoReporte.VENTAS) {

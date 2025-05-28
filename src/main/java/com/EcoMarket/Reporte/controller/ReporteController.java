@@ -24,33 +24,40 @@ public class ReporteController {
      @Autowired
     private ReporteService reporteService;
 
-    @PostMapping("/crear")
-    public ResponseEntity<Reporte> createReporte(@RequestBody Reporte reporte){
-        Reporte savedReporte = reporteService.create(reporte);
-        return ResponseEntity.ok(savedReporte);
+    @PostMapping("/crearEntrega")
+    public ResponseEntity<Reporte> crearReporteEntrega(@RequestBody Reporte reporte){
+        Reporte nuevoReporte = reporteService.crearReporteEntrega(reporte);
+            return ResponseEntity.ok(nuevoReporte);
+    }
+
+    @PostMapping("/crearInventario")
+    public ResponseEntity<Reporte> crearReporteInventario(@RequestBody Reporte reporte){
+        Reporte nuevoReporte = reporteService.crearReporteInventario(reporte);
+            return ResponseEntity.ok(nuevoReporte);
+    }
+
+    @PostMapping("/crearVenta")
+    public ResponseEntity<Reporte> crearReporteVenta(@RequestBody Reporte reporte){
+        Reporte nuevoReporte = reporteService.crearReporteVenta(reporte);
+            return ResponseEntity.ok(nuevoReporte);
     }
 
     @GetMapping("/mostrar")
-    public ResponseEntity<List<Reporte>> getAllReportes() {
-        return ResponseEntity.ok(reporteService.readAllReportes());
+    public ResponseEntity<List<Reporte>> mostrarReporte() {
+     List<Reporte> reportes = reporteService.pedirReportes();
+          return ResponseEntity.ok(reportes);
     }
 
-    @PostMapping("/reporteVenta/{id}")	
-    public Reporte generarReporteVenta(@PathVariable int id) {
-         return reporteService.generarReporteVenta(id);
-        
+     @GetMapping("/mostrar/{id}")
+     public ResponseEntity<Reporte> mostrarID(@PathVariable int id) {
+          return reporteService.mostrarxID(id)
+               .map(ResponseEntity::ok)
+               .orElse(ResponseEntity.notFound().build());
+     }       
+     
+     @GetMapping("/eliminar/{id}")
+     public ResponseEntity<Void> eliminarReporte(@PathVariable int id) {
+        reporteService.eliminarReporte(id);
+        return ResponseEntity.noContent().build();
     }
-
-    @PostMapping("/reporteInventario/{id}")
-    public Reporte generarReporteInventario(@PathVariable int id) {
-         return reporteService.generarReporteInventario(id);
-        
-    }
-    
-    @PostMapping("/reporteEntrega/{id}")
-    public Reporte generarReporteEntrega(@PathVariable int id) {
-         return reporteService.generarReporteEntrega(id);
-        
-    }
-    
 }

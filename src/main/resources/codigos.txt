@@ -1,20 +1,77 @@
+VENTAS:
+
 {
   "id": 101,
   "tipo": "VENTAS",
-  "fecha": "2023-11-20",
+  "fecha": "2025-04-18",
   "formato": "PDF"
 }
 
 {
-  "id": 102,
-  "tipo": "INVENTARIO",
-  "fecha": "2023-11-19",
-  "formato": "EXCEL"
+  "id": 104,
+  "tipo": "VENTAS",
+  "fecha": "2025-04-26",
+  "formato": "PDF"
 }
+
+{
+  "id": 107,
+  "tipo": "VENTAS",
+  "fecha": "2025-03-16",
+  "formato": "PDF"
+}
+
+ENTREGA:
 
 {
   "id": 103,
   "tipo": "ENTREGA",
-  "fecha": "2023-11-18",
+  "fecha": "2025-04-13",
   "formato": "CSV"
 }
+
+{
+  "id": 106,
+  "tipo": "ENTREGA",
+  "fecha": "2025-05-13",
+  "formato": "CSV"
+}
+
+{
+  "id": 109,
+  "tipo": "ENTREGA",
+  "fecha": "2025-04-25",
+  "formato": "CSV"
+}
+
+{
+  "id": 110,
+  "tipo": "ENTREGA",
+  "fecha": "2025-05-21",
+  "formato": "CSV"
+}
+
+INVENTARIO:
+
+{
+  "id": 102,
+  "tipo": "INVENTARIO",
+  "fecha": "2025-05-14",
+  "formato": "EXCEL"
+}
+
+
+{
+  "id": 105,
+  "tipo": "INVENTARIO",
+  "fecha": "2025-05-11",
+  "formato": "EXCEL"
+}
+
+{
+  "id": 108,
+  "tipo": "INVENTARIO",
+  "fecha": "2025-04-29",
+  "formato": "EXCEL"
+}
+
